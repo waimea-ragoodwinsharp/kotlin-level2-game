@@ -22,6 +22,9 @@ fun main() {
     println("└-------------------┘".magenta())
     setupBoard()
     getPlayerNames()
+    getPlayerAction()
+    switchSquares()
+
 
     while (true){
         showSquares()
@@ -38,9 +41,15 @@ fun main() {
 
         break
     }
+    while (true) {
+        val action = getPlayerAction()
+        when (action) {
+
+        }
+    }
 
 }
-//Making the squares exits
+//Making the squares exist
 fun setupBoard() {
     repeat(15) {
         squares.add("EMPTY")
@@ -57,6 +66,8 @@ fun setupBoard() {
     squares[9] = "P1"
 
     squares[10] = "P2"
+
+
 
 }
 
@@ -93,10 +104,24 @@ fun getPlayerNames() {
 
 }
 
+fun switchSquares() {
+    println("Player 1, Choose a square to switch to")
+    var squareNum1 = 1
+    var squareNum2 = 2
+
+    val temp = squareNum1
+    squareNum1 = squareNum2
+    squareNum2 = temp
 
 
 
+}
 
+
+fun getPlayerAction(): Char {
+    println("Alright $p1Name. Choose your move")
+
+}
 
 
 
