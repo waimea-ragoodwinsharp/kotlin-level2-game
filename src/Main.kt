@@ -23,8 +23,8 @@ fun main() {
 
     setupBoard()
     getPlayerNames()
-//  getPlayerAction1()
-//  getPlayerAction2()
+    getPlayerAction1()
+    getPlayerAction2()
     switchSquares()
 
 
@@ -96,47 +96,64 @@ fun showSquares() {
 
 
 fun getPlayerNames() {
-    println("Player 1, what is your name? ")
-    val answer = readlnOrNull()
-    if (!answer.isNullOrBlank()) {
+    while (true) {
+        println("Player 1, what is your name? ")
+        val answer = readlnOrNull()
+        if (!answer.isNullOrBlank()) {
             p1Name = answer
             break
         }
-}
+    }
+
         while (true) {
-    val p2Name = readlnOrNull()
-    if (p2Name != null && p2Name.isNotBlank()) break
+            println("Player 2, what is your name? ")
+            val p2Name = readlnOrNull()
+            if (p2Name != null && p2Name.isNotBlank()) break
+
+        }
+    }
+fun getPlayerAction1(): String? {
+    println("Alright $p1Name. Choose your move")
+    var playerMove: String?
+    while (true) {
+        println("[L]eft (Move to the left)")
+        println("[R]ight (Move to the right)")
+        val move = readlnOrNull()
+        when (move) {
+            "l" -> playerMove = "Left"
+            "R" -> playerMove = "Right"
+        }
+   //    if (playerMove != null) break
 
 
-//    var p1name = readlnOrNull()
-//    if (p1name.isNullOrBlank())
-//        p1name = "Player 1"
-//    println("Player 2, what is your name? ")
-//    var p2name = readlnOrNull()
-//    if (p2name.isNullOrBlank())
-//        p2name = "Player 2"
+    }
+}
+    fun getPlayerAction2(): String? {
+        println("Alright ${p2Name}Name. Choose your move")
+        var playerMove: String?
+        while (true) {
+            println("[L]eft (Move to the left)")
+            println("[R]ight (Move to the right)")
+            val move = readlnOrNull()
+            when (move) {
+                "l" -> playerMove = "Left"
+                "R" -> playerMove = "Right"
+            }
+       //    if (playerMove.IsNullOrBlank()) break
 
+        }
 
-
+    }
 fun switchSquares() {
     println("$p1Name, Choose a square to switch to")
 
-
-
-
 }
 
 
-//fun getPlayerAction1(): Char {
-//    println("Alright $p1Name. Choose your move")
-//
-//}
-//
-//
-//fun getPlayerAction2(): Char {
-//    println("Alright ${p2Name}Name. Choose your move")
-//
-//}
+
+
+
+
 
 
 
