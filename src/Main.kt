@@ -23,13 +23,16 @@ fun main() {
 
     setupBoard()
     getPlayerNames()
-    getPlayerAction1()
-    getPlayerAction2()
-    switchSquares()
-
-
     while (true){
         showSquares()
+
+        // Get the counter of P1 that they want to move
+        val p1Move = getPlayerAction(p1Name)
+//        switchSquares(p1Counter, p1Move)
+
+//        getPlayerAction(p2Name)
+
+
         // get the p1's move
 
         // make the move on the board
@@ -41,7 +44,7 @@ fun main() {
 
         // Squish!
 
-        break
+        // if winner then break
     }
 //    while (true) {
 //        val action = getPlayerAction1()
@@ -88,7 +91,7 @@ fun showSquares() {
     for (i in 0..<squares.size) {
         print("| ${squares[i].padEnd(5)} ".cyan())
     }
-    println("|".blue())
+    println("|".cyan())
 
     println("+-------".repeat(squares.size).blue() + "+".blue())
 
@@ -107,48 +110,39 @@ fun getPlayerNames() {
 
         while (true) {
             println("Player 2, what is your name? ")
-            val p2Name = readlnOrNull()
-            if (p2Name != null && p2Name.isNotBlank()) break
+            val answer2 = readlnOrNull()
+            if (p2Name != null && p2Name.isNotBlank())
+                if (!answer2.isNullOrBlank())
+                p2Name = answer2
+                break
 
         }
     }
-fun getPlayerAction1(): String? {
-    println("Alright $p1Name. Choose your move")
-    var playerMove: String?
+fun getPlayerAction(name: String): String {
+    println("Alright $name. Choose your move")
+
     while (true) {
         println("[L]eft (Move to the left)")
         println("[R]ight (Move to the right)")
-        val move = readlnOrNull()
+        val move = readlnOrNull()?.uppercase()
         when (move) {
-            "l" -> playerMove = "Left"
-            "R" -> playerMove = "Right"
+            "L" -> return "Left"
+            "R" -> return "Right"
         }
-   //    if (playerMove != null) break
-
-
     }
 }
-    fun getPlayerAction2(): String? {
-        println("Alright ${p2Name}Name. Choose your move")
-        var playerMove: String?
-        while (true) {
-            println("[L]eft (Move to the left)")
-            println("[R]ight (Move to the right)")
-            val move = readlnOrNull()
-            when (move) {
-                "l" -> playerMove = "Left"
-                "R" -> playerMove = "Right"
-            }
-       //    if (playerMove.IsNullOrBlank()) break
+
+
+fun switchSquares(name: String): String {
+    println("$name, Choose a square to move")
+    while (true) {
+        val counter = readlnOrNull()?.toInt()
+        when (counter) {
 
         }
 
     }
-fun switchSquares() {
-    println("$p1Name, Choose a square to switch to")
-
 }
-
 
 
 
