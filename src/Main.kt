@@ -43,6 +43,7 @@ fun main() {
         // Make it
 
         // Squish!
+        removeEdgesOfBoard()
 
         // if winner then break
     }
@@ -138,15 +139,21 @@ fun switchSquares(name: String): String {
     while (true) {
         val counter = readlnOrNull()?.toInt()
         when (counter) {
-
+            
         }
 
     }
 }
 
+fun removeEdgesOfBoard() {
 
+    squares.removeFirst()
+    squares.removeLast()
+}
 
+fun checkForWinner() {
 
+}
 
 
 
