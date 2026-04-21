@@ -29,13 +29,9 @@ fun main() {
         // Get the counter of P1 that they want to move
         val p1Move = switchSquares(p1Name)
 
-//        getPlayerAction(p2Name)
-
-
         // get the p1's move
 
         // make the move on the board
-
 
         // Get P2 move
 
@@ -45,17 +41,13 @@ fun main() {
         removeEdgesOfBoard()
 
         // if winner then break
+        checkForWinner()
     }
-//    while (true) {
-//        val action = getPlayerAction1()
-//        val action = getPlayerAction2()
-//        when (action) {
-//
-//        }
-//    }
 
 }
+
 //Making the squares exist
+
 fun setupBoard() {
     repeat(15) {
         squares.add("     ")
@@ -77,8 +69,8 @@ fun setupBoard() {
 
 }
 
-
 // showing the squares and making them pretty
+
 fun showSquares() {
 
     for (i in 1..squares.size) {
@@ -97,6 +89,9 @@ fun showSquares() {
 
 }
 
+// getting the names of the player
+
+// getting player 1's name
 
 fun getPlayerNames() {
     while (true) {
@@ -108,51 +103,55 @@ fun getPlayerNames() {
         }
     }
 
-        while (true) {
-            println("Player 2, what is your name? ")
-            val answer2 = readlnOrNull()
-            if (p2Name != null && p2Name.isNotBlank())
-                if (!answer2.isNullOrBlank())
+    // getting player 2's name
+
+    while (true) {
+        println("Player 2, what is your name? ")
+        val answer2 = readlnOrNull()
+        if (p2Name != null && p2Name.isNotBlank())
+            if (!answer2.isNullOrBlank()) {
                 p2Name = answer2
                 break
+            }
 
-        }
     }
-//fun getPlayerAction(name: String): String {
-//    println("Alright $name. Choose your move")
-//
-//    while (true) {
-//        println("[L]eft (Move to the left)")
-//        println("[R]ight (Move to the right)")
-//        val move = readlnOrNull()?.uppercase()
-//        when (move) {
-//            "L" -> return "Left"
-//            "R" -> return "Right"
-//        }
-//    }
-//}
+}
 
 
-fun switchSquares(name: String?): String? {
+fun switchSquares(name: String) {
+
+    // player 1 move
+
     println("$name, which square will move?")
     val targetSquare = readlnOrNull().toInt()
-    // minus 1 from user input to make list correct
+    if (targetSquare != null && targetSquare in 1..squares.size) {
+        val targetSquareIndex = targetSquare - 1
+    }
+    // player 2 move
+
     println("$name, which square will be switched?")
     val switchedSquare = readlnOrNull().toInt()
-    //same here
-   squares[targetSquare] = "O"
-  val temp = squares[targetSquare]
-    squares [targetSquare] = squares [switchedSquare]
-    squares [switchedSquare] = temp
+    if (switchedSquare != null && switchedSquare in 1..squares.size) {
+    val switchedSquareIndex = switchedSquare - 1
+}
+    // switching the squares
 
-    }
+        squares[targetSquare] = "O"
+        val temp = squares[targetSquare]
+        squares[targetSquare] = squares[switchedSquare]
+        squares[switchedSquare] = temp
 
+}
+
+// making the squish
 
 fun removeEdgesOfBoard() {
 
     squares.removeFirst()
     squares.removeLast()
 }
+
+// checking for a winner
 
 fun checkForWinner() {
 
