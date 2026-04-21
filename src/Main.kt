@@ -27,14 +27,14 @@ fun main() {
         showSquares()
 
         // Get the counter of P1 that they want to move
-        val p1Move = switchSquares(p1Name)
+         switchSquares(p1Name)
 
         // get the p1's move
 
         // make the move on the board
-
+        showSquares()
         // Get P2 move
-
+        switchSquares2(p2Name)
         // Make it
 
         // Squish!
@@ -118,30 +118,57 @@ fun getPlayerNames() {
 }
 
 
-fun switchSquares(name: String) {
+fun switchSquares(p1Name: String) {
 
     // player 1 move
 
-    println("$name, which square will move?")
-    val targetSquare = readlnOrNull().toInt()
+    println("$p1Name, which square will move?")
+    val targetSquare = readln().toInt()
     if (targetSquare != null && targetSquare in 1..squares.size) {
         val targetSquareIndex = targetSquare - 1
-    }
-    // player 2 move
 
-    println("$name, which square will be switched?")
-    val switchedSquare = readlnOrNull().toInt()
+    }
+    println("$p1Name, which square will be switched?")
+    val switchedSquare = readln().toInt()
     if (switchedSquare != null && switchedSquare in 1..squares.size) {
-    val switchedSquareIndex = switchedSquare - 1
-}
+        val switchedSquareIndex = switchedSquare - 1
+    }
     // switching the squares
 
-        squares[targetSquare] = "O"
-        val temp = squares[targetSquare]
-        squares[targetSquare] = squares[switchedSquare]
-        squares[switchedSquare] = temp
+    val temp = squares[targetSquare]
+    squares[targetSquare] = squares[switchedSquare]
+    squares[switchedSquare] = temp
+
 
 }
+
+
+
+fun switchSquares2(p2Name: String) {
+
+    // player 2 move
+
+    println("$p2Name, which square will move?")
+    val targetSquare = readln().toInt()
+    if (targetSquare != null && targetSquare in 1..squares.size) {
+        val targetSquareIndex = targetSquare - 1
+
+    }
+
+
+    println("$p2Name, which square will be switched?")
+    val switchedSquare = readln().toInt()
+    if (switchedSquare != null && switchedSquare in 1..squares.size) {
+        val switchedSquareIndex = switchedSquare - 1
+    }
+    // switching the squares
+
+    val temp = squares[targetSquare]
+    squares[targetSquare] = squares[switchedSquare]
+    squares[switchedSquare] = temp
+
+}
+
 
 // making the squish
 
