@@ -122,22 +122,32 @@ fun switchSquares(p1Name: String) {
 
     // player 1 move
 
-    println("$p1Name, which square will move?")
-    val targetSquare = readln().toInt()
-    if (targetSquare != null && targetSquare in 1..squares.size) {
-        val targetSquareIndex = targetSquare - 1
+    var targetSquare: Int?
+    while (true) {
+        println("$p1Name, which square will move?")
+        targetSquare = readlnOrNull()?.toIntOrNull()
+        if (targetSquare != null && targetSquare in 1..squares.size) {
+            break
+        }
+    }
 
-    }
-    println("$p1Name, which square will be switched?")
-    val switchedSquare = readln().toInt()
+    val targetSquareIndex = targetSquare!! - 1
+
+
+    var switchedSquare: Int?
+    while (true) {
+        println("$p1Name, which square will be switched?")
+    switchedSquare = readlnOrNull()?.toIntOrNull()
     if (switchedSquare != null && switchedSquare in 1..squares.size) {
-        val switchedSquareIndex = switchedSquare - 1
+        break
     }
+}
+    val switchedSquareIndex = switchedSquare!! - 1
     // switching the squares
 
-    val temp = squares[targetSquare]
-    squares[targetSquare] = squares[switchedSquare]
-    squares[switchedSquare] = temp
+    val temp = squares[targetSquareIndex]
+    squares[targetSquareIndex] = squares[switchedSquareIndex]
+    squares[switchedSquareIndex] = temp
 
 
 }
@@ -147,25 +157,36 @@ fun switchSquares(p1Name: String) {
 fun switchSquares2(p2Name: String) {
 
     // player 2 move
+    var targetSquare: Int?
+    while (true) {
+        println("$p2Name, which square will move?")
+        targetSquare = readlnOrNull()?.toIntOrNull()
+        if (targetSquare != null && targetSquare in 1..squares.size) {
+           break
 
-    println("$p2Name, which square will move?")
-    val targetSquare = readln().toInt()
-    if (targetSquare != null && targetSquare in 1..squares.size) {
-        val targetSquareIndex = targetSquare - 1
-
+        }
     }
+    val targetSquareIndex = targetSquare!! - 1
 
 
-    println("$p2Name, which square will be switched?")
-    val switchedSquare = readln().toInt()
-    if (switchedSquare != null && switchedSquare in 1..squares.size) {
-        val switchedSquareIndex = switchedSquare - 1
+
+    var switchedSquare: Int?
+    while (true) {
+
+        println("$p2Name, which square will be switched?")
+        switchedSquare = readlnOrNull()?.toIntOrNull()
+        if (switchedSquare != null && switchedSquare in 1..squares.size) {
+            break
+        }
     }
+    val switchedSquareIndex = switchedSquare!! - 1
+
     // switching the squares
 
-    val temp = squares[targetSquare]
-    squares[targetSquare] = squares[switchedSquare]
-    squares[switchedSquare] = temp
+
+    val temp = squares[targetSquareIndex]
+    squares[targetSquareIndex] = squares[switchedSquareIndex]
+    squares[switchedSquareIndex] = temp
 
 }
 
@@ -181,7 +202,30 @@ fun removeEdgesOfBoard() {
 // checking for a winner
 
 fun checkForWinner() {
+    var playAgain = true
+    while (playAgain) {
+        var isGameOver = false
 
+        while (!isGameOver) {
+
+
+            if (checkForAWinner()) {
+                println("Winner!")
+                isGameOver = true
+
+            }
+        }
+        println("Play again? (y/n)")
+        playAgain = readLine()?.lowercase() == "y"
+
+    }
+    return
+
+}
+
+fun checkForAWinner(): Boolean {
+
+return true
 }
 
 
