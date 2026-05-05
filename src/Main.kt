@@ -41,8 +41,19 @@ fun main() {
         removeEdgesOfBoard()
 
         // if winner then break
-        checkForAWinner()
-        //checkForWinner()
+        val winner = checkForAWinner()
+
+        if (winner == 1) {
+            println("You win, $p1Name!!! YIPPIEEE \uD83D\uDE06\uD83D\uDC4F")
+        }
+        if (winner == 2) {
+            println("You win, $p2Name!!! HUZZAAAAHHH \uD83D\uDE01\uD83D\uDC4F")
+        }
+        if (winner != 0) {
+            println("You are the best!")
+            break
+        }
+
     }
 
 }
@@ -202,39 +213,16 @@ fun removeEdgesOfBoard() {
 
 // checking for a winner
 
-//fun checkForWinner() {
-//    var playAgain = true
-//    while (playAgain) {
-//        var isGameOver = false
-//
-//        while (!isGameOver) {
-//
-//
-//            if (checkForAWinner()) {
-//                println("Winner!")
-//                isGameOver = true
-//
-//            }
-//        }
-//        println("Play again? (y/n)")
-//        playAgain = readLine()?.lowercase() == "y"
-//
-//    }
-//    return
-//
-//}
 
-// Return 0 if no winner yet, otherwise the player number (1 or 2)
 fun checkForAWinner(): Int {
 
-val counters = listOf("P1", "P2")
-    println(counters.count { it == "P1" })
-    println(counters.count { it == "P2" })
+    if (squares.size == 1)  {
+        if (squares[0] == "P1") return 1
+        if (squares[0] == "P2") return 2
+    }
 
-return 0
+    return 0
 }
-
-
 
 
 
