@@ -193,6 +193,7 @@ fun switchSquares2(p2Name: String) {
     }
     val switchedSquareIndex = switchedSquare!! - 1
 
+
     // switching the squares
 
 
